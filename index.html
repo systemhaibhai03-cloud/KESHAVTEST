@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #667eea, #764ba2, #6b8dd6, #8e37d7);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    overflow: hidden;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating bubbles */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    animation: float 10s ease-in-out infinite;
+  }
+  .bubble:nth-child(1) { width: 120px; height: 120px; top: 15%; left: 10%; }
+  .bubble:nth-child(2) { width: 80px; height: 80px; top: 65%; left: 80%; animation-delay: 2s; }
+  .bubble:nth-child(3) { width: 150px; height: 150px; top: 75%; left: 15%; animation-delay: 4s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-40px) scale(1.1); }
+  }
+
+  .login-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 16px;
+    padding: 48px 40px;
+    width: 360px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: slideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  h2 { color: #fff; text-align: center; margin-bottom: 32px; letter-spacing: 1px; }
+
+  .input-group { position: relative; margin-bottom: 28px; }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px 4px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+  }
+
+  .input-group label {
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    color: rgba(255,255,255,0.7);
+    pointer-events: none;
+    transition: 0.3s ease;
+  }
+
+  /* Floating label animation */
+  .input-group input:focus + label,
+  .input-group input:valid + label {
+    top: -14px;
+    font-size: 12px;
+    color: #fff;
+  }
+
+  /* Animated underline */
+  .input-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: #fff;
+    transition: width 0.4s ease;
+  }
+  .input-group:focus-within::after { width: 100%; }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    color: #5b3ea8;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  }
+  button:active { transform: translateY(0); animation: pulse 0.3s; }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.6); }
+    100% { box-shadow: 0 0 0 16px rgba(255,255,255,0); }
+  }
+
+  .footer-text { margin-top: 20px; text-align: center; color: rgba(255,255,255,0.7); font-size: 13px; }
+  .footer-text a { color: #fff; }
+</style>
+</head>
+<body>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <form class="login-card" onsubmit="event.preventDefault(); alert('Logged in!');">
+    <h2>Welcome Back</h2>
+    <div class="input-group">
+      <input type="text" required>
+      <label>Username</label>
+    </div>
+    <div class="input-group">
+
+
+
+
+
+    
+      <input type="password" required>
+      <label>Password</label>
+    </div>
+    <button type="submit">Sign In</button>
+    <p class="footer-text">Don't have an account? <a href="#">Sign up</a></p>
+  </form>
+</body>
+</html>
